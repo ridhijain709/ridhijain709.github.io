@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ridhi Jain — AI Automation Consultant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+    ============================================ */
+    :root {
+      --bg: #FAFAF7;
+      --text: #1A1A1A;
+      --muted: #6B6B6B;
+      --accent: #D4820A;
+      --accent-light: #FFF3E0;
+      --border: #E8E8E2;
+      --card-bg: #FFFFFF;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    .hero {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 96px 2rem 80px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 0.75rem 1.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ============================================
+       SECTION LAYOUT
+    ============================================ */
+    section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 72px 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================
+       ABOUT
+    ============================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    .about-facts {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .fact-item {
+      display: flex;
+      flex-direction: column;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fact-item:last-child { border-bottom: none; }
+
+    .fact-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .fact-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ============================================
+       PROJECTS
+    ============================================ */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(212, 130, 10, 0.08);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .project-meta-item {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .project-meta-item strong { color: var(--text); }
+
+    .project-status {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .status-demo { background: #E8F5E9; color: #2E7D32; }
+    .status-building { background: #FFF3E0; color: #E65100; }
+    .status-complete { background: #E3F2FD; color: #1565C0; }
+
+    /* ============================================
+       HOW IT WORKS
+    ============================================ */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+
+    .step:last-child { padding-bottom: 0; }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step:not(:last-child) .step-number::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: calc(100% + 0.5rem);
+      background: var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .step-content { padding-top: 0.6rem; }
+    .step-title { font-weight: 600; margin-bottom: 0.3rem; }
+    .step-desc { color: var(--muted); font-size: 0.9rem; }
+
+    /* ============================================
+       CREDENTIALS
+    ============================================ */
+    .creds-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .cred-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+
+    .cred-issuer {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .cred-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       CONTACT
+    ============================================ */
+    .contact-box {
+      background: var(--text);
+      color: white;
+      border-radius: 8px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-box p {
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      background: white;
+      color: var(--text);
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover { background: var(--accent-light); }
+
+    .contact-btn.outline {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+
+    .contact-btn.outline:hover { border-color: white; }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .creds-grid { grid-template-columns: 1fr; }
+      nav .nav-links { display: none; }
+      .hero { padding: 64px 1.25rem 48px; }
+      section { padding: 48px 1.25rem; }
+      .contact-box { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <span class="nav-name">Ridhi Jain</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">AI Automation Consultant · Available July 2026</span>
+  <h1>I build AI systems that help<br><em>small businesses stop losing leads</em></h1>
+  <p class="hero-sub">
+    Final-year BBA student building AI automation for Indian SMEs —
+    clinics, coaching centres, FMCG distributors, and B-schools.
+    Currently onboarding my first 3 clients. Targeting analyst roles at EY, Deloitte, BCG, McKinsey.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">See my work</a>
+    <a href="mailto:ridhijain608@gmail.com" class="btn-secondary">Get in touch</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <h2 class="section-title">Building things before<br>I have all the answers</h2>
+  <p class="section-subtitle">Honest positioning — where I actually am, not where I want to appear to be.</p>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a final-year BBA student at Maa Shakumbhari University, graduating July 2026. I run an AI automation consultancy targeting Indian SMEs — building the systems now, onboarding clients now, learning by doing.</p>
+      <p>My work sits at the intersection of <strong>business analysis and practical AI deployment</strong>. I build case studies the consulting way (hypothesis-driven, data-sourced) and I build automation systems the startup way (ship the demo, talk to the client, iterate).</p>
+      <p>I'm also a <strong>published author</strong> — my bilingual Hindi/English poetry collection <em>Aks: Reflections of the Soul</em> came out in 2024. I believe clear thinking and clear writing are the same skill.</p>
+    </div>
+
+    <div class="about-facts">
+      <div class="fact-item">
+        <span class="fact-label">Currently</span>
+        <span class="fact-value">Building AI demos for 5 SME verticals</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Education</span>
+        <span class="fact-value">BBA, 85% — Maa Shakumbhari University / CCSU</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Graduating</span>
+        <span class="fact-value">July 2026</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Targeting</span>
+        <span class="fact-value">Analyst roles — EY, Deloitte, BCG, McKinsey</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Available</span>
+        <span class="fact-value">Mumbai · Delhi NCR · Remote</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Side credential</span>
+        <span class="fact-value">Published author (Hindi/English poetry)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">What I've built</h2>
+  <p class="section-subtitle">Three types: business case analysis, AI automation systems, and product demos. All use publicly available data or original code.</p>
+
+  <div class="projects-list">
+
+    <!-- Project 1: Mamaearth -->
+    <a href="https://github.com/ridhijain709/mamaearth-supply-chain" class="project-card" target="_blank">
+      <span class="project-tag">Business Case Analysis · FMCG</span>
+      <h3 class="project-title">Mamaearth Supply Chain Analysis</h3>
+      <p class="project-desc">
+        McKinsey-format case study examining Mamaearth's distribution bottlenecks during their rapid D2C expansion.
+        Built using publicly available annual reports and SEBI filings. Key finding: SKU proliferation + fragmented 3PL
+        = inventory visibility breakdown. Includes structured recommendation with implementation complexity assessment.
+      </p>
+      <div class="project-meta">
+        <span class="project-meta-item"><strong>Tools:</strong> Excel, Power BI</span>
+        <span class="project-meta-item"><strong>Data:</strong> BSE filings, Honasa DRHP, industry reports</span>
+        <span class="project-status status-complete">Complete</span>
+      </div>
+    </a>
+
+    <!-- Project 2: Swiggy -->
+    <a href="https://github.com/ridhijain709/swiggy-qcommerce-model" class="project-card" target="_blank">
+      <span class="project-tag">Financial Model · Q-Commerce</span>
+      <h3 class="project-title">Swiggy Q-Commerce Unit Economics Model</h3>
+      <p class="project-desc">
+        Ground-up financial model for a single Swiggy Instamart dark store. Models contribution margin per order,
+        dark store P&L, and break-even order volume. Sensitivity analysis across 6 key variables.
+        Key finding: most dark stores currently operate below break-even order density.
+      </p>
+      <div class="project-meta">
+        <span class="project-meta-item"><strong>Tools:</strong> Excel, Python</span>
+        <span class="project-meta-item"><strong>Data:</strong> Investor disclosures, analyst reports</span>
+        <span class="project-status status-complete">Complete</span>
+      </div>
+    </a>
+
+    <!-- Project 3: AI Automation Hub -->
+    <a href="https://github.com/ridhijain709/student-ai-automation" class="project-card" target="_blank">
+      <span class="project-tag">AI System · 5 Verticals</span>
+      <h3 class="project-title">AI Automation Hub — Indian SME WhatsApp System</h3>
+      <p class="project-desc">
+        5-vertical AI automation system covering FMCG, healthcare, edtech, B-schools, and marketing agencies.
+        Each vertical has a working demo: WhatsApp-style chat interface, AI responses via Gemini API,
+        FAQ matching, escalation logic, and conversation logging.
+        Currently being deployed with first clients.
+      </p>
+      <div class="project-meta">
+        <span class="project-meta-item"><strong>Stack:</strong> Python, FastAPI, React, Gemini API</span>
+        <span class="project-meta-item"><strong>Status:</strong> Onboarding clients</span>
+        <span class="project-status status-building">In Progress</span>
+      </div>
+    </a>
+
+    <!-- Project 4: AISTUDYGENIUS -->
+    <a href="https://github.com/ridhijain709/AISTUDYGENIUS" class="project-card" target="_blank">
+      <span class="project-tag">AI Product · EdTech</span>
+      <h3 class="project-title">AISTUDYGENIUS — AI Study Tool</h3>
+      <p class="project-desc">
+        AI-powered study assistant built in TypeScript. Helps students generate summaries,
+        practice questions, and concept explanations from uploaded content.
+        Built as a proof-of-concept for the EdTech vertical.
+      </p>
+      <div class="project-meta">
+        <span class="project-meta-item"><strong>Stack:</strong> TypeScript, AI API</span>
+        <span class="project-status status-demo">Demo</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">The WhatsApp automation flow</h2>
+  <p class="section-subtitle">For business owners who want to understand the system before buying it.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <p class="step-title">Customer messages on WhatsApp</p>
+        <p class="step-desc">A patient asks about acne treatment. A distributor asks about MOQ. A student asks about course fees. It arrives like any normal WhatsApp message.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <p class="step-title">System checks your FAQ bank first</p>
+        <p class="step-desc">We pre-load 15–30 of your most common questions and answers. If the message matches, it answers instantly from your FAQ — no AI cost, no delay.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <p class="step-title">For new questions, AI generates a response</p>
+        <p class="step-desc">Using your business context (what you sell, your pricing, your rules), the AI writes a reply in your tone. It never invents information it doesn't have.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <p class="step-title">Response sent with a call-to-action</p>
+        <p class="step-desc">Every reply ends with the next step — book an appointment, fill the enquiry form, get a pricing sheet. The conversation moves forward automatically.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <p class="step-title">Complex cases escalate to you</p>
+        <p class="step-desc">Complaints, medical questions, large orders, payment issues — the system flags these and alerts you. You only spend time on conversations that actually need you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <p class="section-label">Credentials</p>
+  <h2 class="section-title">What I've done</h2>
+  <p class="section-subtitle">Certifications, programs, and simulations — all verified.</p>
+
+  <div class="creds-grid">
+    <div class="cred-card">
+      <p class="cred-issuer">McKinsey & Company</p>
+      <p class="cred-name">McKinsey Forward Program — Alumni</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">Microsoft × Edunet</p>
+      <p class="cred-name">Power BI — Microsoft Elevate Certification</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">IBM × Edunet</p>
+      <p class="cred-name">AI & Machine Learning — SkillsBuild Certification</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">IBM — Credly</p>
+      <p class="cred-name">AI Fundamentals — Verified Badge</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">Consulting Simulations (8 total)</p>
+      <p class="cred-name">BCG · Deloitte · Accenture · PwC · KPMG · Tata GenAI · Walmart · NSW Government</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">Internshala</p>
+      <p class="cred-name">Prompt Engineering Certification</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">Google</p>
+      <p class="cred-name">Google Analytics Certification</p>
+    </div>
+    <div class="cred-card">
+      <p class="cred-issuer">Work Experience</p>
+      <p class="cred-name">Power BI · AIML · SAP SuccessFactors · AI Ethics Research · Digital Marketing (VogueNestFashion)</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="border-top: none; padding-top: 0;">
+  <div class="contact-box">
+    <h2>Let's talk</h2>
+    <p>For client demos, consulting roles, or collaborations — I respond within 24 hours.</p>
+    <div class="contact-links">
+      <a href="mailto:ridhijain608@gmail.com" class="contact-btn">ridhijain608@gmail.com</a>
+      <a href="https://linkedin.com/in/ridhi-jain-consulting-analyst" class="contact-btn outline" target="_blank">LinkedIn</a>
+      <a href="https://github.com/ridhijain709" class="contact-btn outline" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Ridhi Jain · AI Automation Consultant · BBA '26 · Muzaffarnagar, UP</p>
+  <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.6;">Also: published author of <em>Aks: Reflections of the Soul</em> · <a href="https://ridhijain709.github.io/AKS" style="color: inherit;">Read the book</a></p>
+</footer>
+
+</body>
+</html>
